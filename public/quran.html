@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6625546265016157" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجتمع هيثم سلامه</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+  <!--  شريط الاعلانات -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6625546265016157"crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-6625546265016157"
+    data-ad-slot="3392030847"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+
+  <section class="blue-zone-page">     
+    <header class="main-header">
+      <nav class="nav-container">
+        <div class="logo">
+          <img src="images/sitelogo.png" alt="Site Logo">
+            </div>      
+              <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="droos.html">كورسات تعليمية</a></li>
+                <li><a href="quran.html" class="active">قرءان كريم</a></li>
+                <li><a href="downloads.html">البرامج</a></li>
+                <li><a href="files.html">الملفات</a></li>
+                <li><a href="articles.html" >المقالات</a></li>
+                <li><a href="contact.html">تواصل معي</a></li>
+                <li><a href="reviews.html">ريفيوهات أجهزة</a></li>
+                <li><a href="vlogs.html">فلوجاتي</a></li>
+                </ul>
+
+            <div class="search-box">
+              <input type="text" placeholder="ابحث عن ...">
+              <span class="search-icon">🔍</span>
+            </div>
+      </nav>
+    </header>
+
+    <!-- بداية محتويات الموقع-->
+    <div class="feature-body">    
+      <div class="feature-title"> 
+        <div class="title-content">     
+          <h3>القرآن الكريم</h3>
+          <p>اختار السوره المراد تشغيلها من القائمة او اضغط تشغيل الكل</p>   
+        </div> 
+      </div>
+      <!-- نهاية المحتويات-->  
+      
+      
+
+      
+      
+        <!--بدايه قلب الموقع body-content-->
+       <div class="body-content">
+  <div class="quran-shell">
+
+    <section class="quran-player-area">
+      <div class="quran-player-card">
+        <h2>بسم الله الرحمن الرحيم</h2>
+        
+        <p>اختَر السورة من الجدول أدناه أو استخدم أزرار التحكم للمشغل الرئيسي.</p>
+
+        <div class="player-status">
+         <h2 id="current-title">لم يتم اختيار سورة بعد</h2>
+        </div>
+
+        <div class="player-controls">
+          <button onclick="prevTrack()">السابق</button>
+          <button onclick="playAll()">تشغيل الكل</button>
+          <button onclick="playTrack(current)">تشغيل</button>
+          <button onclick="pauseTrack()">إيقاف</button>
+          <button onclick="nextTrack()">التالي</button>
+        </div>
+
+        <audio id="player" controls></audio>
+         <p>استمتع بالاستماع إلى تلاوة القرآن الكريم .</p>
+      </div>
+
+      <aside class="quran-mushaf-card">
+        
+        <img src="images/moshaf.png" alt="مصحف" >
+        <!--<div class="mushaf-preview">
+          
+        </div> -->
+       
+      </aside>
+    </section>
+
+    <section class="quran-list-section">
+      <h2>جدول السور</h2>
+      <div class="quran-table-grid">
+        <table class="quran-table" aria-label="أول 57 سورة">
+          <thead>
+            <tr>
+              <th>رقم</th>
+              <th>السورة</th>
+              <th>تشغيل</th>
+              <th>إيقاف</th>
+            </tr>
+          </thead>
+          <tbody id="left-list"></tbody>
+        </table>
+
+        <table class="quran-table" aria-label="آخر 57 سورة">
+          <thead>
+            <tr>
+              <th>رقم</th>
+              <th>السورة</th>
+              <th>تشغيل</th>
+              <th>إيقاف</th>
+            </tr>
+          </thead>
+          <tbody id="right-list"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+const tracks = [
+  { title: "سورة الفاتحة", src: "https://server8.mp3quran.net/afs/001.mp3" },
+  { title: "سورة غافر", src: "https://server8.mp3quran.net/afs/040.mp3" },
+  { title: "سورة فصلت", src: "https://server8.mp3quran.net/afs/041.mp3" },
+  { title: "سورة الشورى", src: "https://server8.mp3quran.net/afs/042.mp3" },
+  { title: "سورة الزخرف", src: "https://server8.mp3quran.net/afs/043.mp3" },
+  { title: "سورة الدخان", src: "https://server8.mp3quran.net/afs/044.mp3" },
+  { title: "سورة الجاثية", src: "https://server8.mp3quran.net/afs/045.mp3" },
+  { title: "سورة الأحقاف", src: "https://server8.mp3quran.net/afs/046.mp3" },
+  { title: "سورة محمد", src: "https://server8.mp3quran.net/afs/047.mp3" },
+  { title: "سورة الفتح", src: "https://server8.mp3quran.net/afs/048.mp3" },
+  { title: "سورة الحجرات", src: "https://server8.mp3quran.net/afs/049.mp3" },
+  { title: "سورة ق", src: "https://server8.mp3quran.net/afs/050.mp3" },
+  { title: "سورة الذاريات", src: "https://server8.mp3quran.net/afs/051.mp3" },
+  { title: "سورة الطور", src: "https://server8.mp3quran.net/afs/052.mp3" },
+  { title: "سورة النجم", src: "https://server8.mp3quran.net/afs/053.mp3" },
+  { title: "سورة القمر", src: "https://server8.mp3quran.net/afs/054.mp3" },
+  { title: "سورة الرحمن", src: "https://server8.mp3quran.net/afs/055.mp3" },
+  { title: "سورة الواقعة", src: "https://server8.mp3quran.net/afs/056.mp3" },
+  { title: "سورة الحديد", src: "https://server8.mp3quran.net/afs/057.mp3" },
+  { title: "سورة المجادلة", src: "https://server8.mp3quran.net/afs/058.mp3" },
+  { title: "سورة الحشر", src: "https://server8.mp3quran.net/afs/059.mp3" },
+  { title: "سورة الممتحنة", src: "https://server8.mp3quran.net/afs/060.mp3" },
+  { title: "سورة الصف", src: "https://server8.mp3quran.net/afs/061.mp3" },
+  { title: "سورة الجمعة", src: "https://server8.mp3quran.net/afs/062.mp3" },
+  { title: "سورة المنافقون", src: "https://server8.mp3quran.net/afs/063.mp3" },
+  { title: "سورة التغابن", src: "https://server8.mp3quran.net/afs/064.mp3" },
+  { title: "سورة الطلاق", src: "https://server8.mp3quran.net/afs/065.mp3" },
+  { title: "سورة التحريم", src: "https://server8.mp3quran.net/afs/066.mp3" },
+  { title: "سورة الملك", src: "https://server8.mp3quran.net/afs/067.mp3" },
+  { title: "سورة القلم", src: "https://server8.mp3quran.net/afs/068.mp3" },
+  { title: "سورة الحاقة", src: "https://server8.mp3quran.net/afs/069.mp3" },
+  { title: "سورة المعارج", src: "https://server8.mp3quran.net/afs/070.mp3" },
+  { title: "سورة نوح", src: "https://server8.mp3quran.net/afs/071.mp3" },
+  { title: "سورة الجن", src: "https://server8.mp3quran.net/afs/072.mp3" },
+  { title: "سورة المزمل", src: "https://server8.mp3quran.net/afs/073.mp3" },
+  { title: "سورة المدثر", src: "https://server8.mp3quran.net/afs/074.mp3" },
+  { title: "سورة القيامة", src: "https://server8.mp3quran.net/afs/075.mp3" },
+  { title: "سورة الإنسان", src: "https://server8.mp3quran.net/afs/076.mp3" },
+  { title: "سورة المرسلات", src: "https://server8.mp3quran.net/afs/077.mp3" },
+  { title: "سورة النبأ", src: "https://server8.mp3quran.net/afs/078.mp3" },
+  { title: "سورة النازعات", src: "https://server8.mp3quran.net/afs/079.mp3" },
+  { title: "سورة عبس", src: "https://server8.mp3quran.net/afs/080.mp3" },
+  { title: "سورة التكوير", src: "https://server8.mp3quran.net/afs/081.mp3" },
+  { title: "سورة الإنفطار", src: "https://server8.mp3quran.net/afs/082.mp3" },
+  { title: "سورة المطففين", src: "https://server8.mp3quran.net/afs/083.mp3" },
+  { title: "سورة الإنشقاق", src: "https://server8.mp3quran.net/afs/084.mp3" },
+  { title: "سورة البروج", src: "https://server8.mp3quran.net/afs/085.mp3" },
+  { title: "سورة الطارق", src: "https://server8.mp3quran.net/afs/086.mp3" },
+  { title: "سورة الأعلى", src: "https://server8.mp3quran.net/afs/087.mp3" },
+  { title: "سورة الغاشية", src: "https://server8.mp3quran.net/afs/088.mp3" },
+  { title: "سورة الفجر", src: "https://server8.mp3quran.net/afs/089.mp3" },
+  { title: "سورة البلد", src: "https://server8.mp3quran.net/afs/090.mp3" },
+  { title: "سورة الشمس", src: "https://server8.mp3quran.net/afs/091.mp3" },
+  { title: "سورة الليل", src: "https://server8.mp3quran.net/afs/092.mp3" },
+  { title: "سورة الضحى", src: "https://server8.mp3quran.net/afs/093.mp3" },
+  { title: "سورة الشرح", src: "https://server8.mp3quran.net/afs/094.mp3" },
+  { title: "سورة التين", src: "https://server8.mp3quran.net/afs/095.mp3" },
+  { title: "سورة العلق", src: "https://server8.mp3quran.net/afs/096.mp3" },
+  { title: "سورة القدر", src: "https://server8.mp3quran.net/afs/097.mp3" },
+  { title: "سورة البينة", src: "https://server8.mp3quran.net/afs/098.mp3" },
+  { title: "سورة الزلزلة", src: "https://server8.mp3quran.net/afs/099.mp3" },
+  { title: "سورة العاديات", src: "https://server8.mp3quran.net/afs/100.mp3" },
+  { title: "سورة القارعة", src: "https://server8.mp3quran.net/afs/101.mp3" },
+  { title: "سورة التكاثر", src: "https://server8.mp3quran.net/afs/102.mp3" },
+  { title: "سورة العصر", src: "https://server8.mp3quran.net/afs/103.mp3" },
+  { title: "سورة الهمزة", src: "https://server8.mp3quran.net/afs/104.mp3" },
+  { title: "سورة الفيل", src: "https://server8.mp3quran.net/afs/105.mp3" },
+  { title: "سورة قريش", src: "https://server8.mp3quran.net/afs/106.mp3" },
+  { title: "سورة الماعون", src: "https://server8.mp3quran.net/afs/107.mp3" },
+  { title: "سورة الكوثر", src: "https://server8.mp3quran.net/afs/108.mp3" },
+  { title: "سورة الكافرون", src: "https://server8.mp3quran.net/afs/109.mp3" },
+  { title: "سورة النصر", src: "https://server8.mp3quran.net/afs/110.mp3" },
+  { title: "سورة المسد", src: "https://server8.mp3quran.net/afs/111.mp3" },
+  { title: "سورة الإخلاص", src: "https://server8.mp3quran.net/afs/112.mp3" },
+  { title: "سورة الفلق", src: "https://server8.mp3quran.net/afs/113.mp3" },
+  { title: "سورة الناس", src: "https://server8.mp3quran.net/afs/114.mp3" }
+];
+
+const player = document.getElementById("player");
+const currentTitle = document.getElementById("current-title");
+const leftList = document.getElementById("left-list");
+const rightList = document.getElementById("right-list");
+let current = 0;
+
+function updatePlayerTitle(index) {
+  currentTitle.textContent = tracks[index]?.title || 'لم يتم اختيار سورة بعد';
+}
+
+function createRow(track, index) {
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${index + 1}</td>
+    <td>${track.title}</td>
+    <td><button class="table-btn play-btn" onclick="playTrack(${index})">تشغيل</button></td>
+    <td><button class="table-btn stop-btn" onclick="pauseTrack()">إيقاف</button></td>
+  `;
+  return row;
+}
+
+tracks.forEach((track, index) => {
+  const row = createRow(track, index);
+  if (index < Math.ceil(tracks.length / 2)) {
+    leftList.appendChild(row);
+  } else {
+    rightList.appendChild(row);
+  }
+});
+
+function playTrack(index) {
+  current = index;
+  player.src = tracks[index].src;
+  updatePlayerTitle(index);
+  player.play();
+}
+
+function pauseTrack() {
+  player.pause();
+}
+
+function prevTrack() {
+  current = current > 0 ? current - 1 : tracks.length - 1;
+  playTrack(current);
+}
+
+function playAll() {
+  current = 0;
+  playTrack(current);
+}
+
+function nextTrack() {
+  current = current < tracks.length - 1 ? current + 1 : 0;
+  playTrack(current);
+}
+
+player.addEventListener('ended', () => {
+  nextTrack();
+});
+</script>
+
+
+
+
+        </div>
+        <!-- نهاية قلب الموقع body-content-->
+        
+          
+      
+    </div>
+    <!-- نهاية قلب الصفحة feature-body --> 
+    <footer style="text-align: center;">&copy; 2025 مجتمع هيثم سلامة</footer> 
+  </section> 
+  <!-- نهاية المساحه الزرقاء blue-zone-page -->
+</body>
+</html>
