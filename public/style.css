@@ -914,7 +914,15 @@ table {
 }
 
 @media (max-width: 760px) {
+    .blue-zone,
+    .blue-zone-page {
+        min-height: 0px;
+        padding-top: 0px;
+        padding-bottom: 18px;
+    }
+
     .nav-container {
+        position: relative;
         padding: 12px 18px;
         justify-content: space-between;
         align-items: center;
@@ -925,16 +933,17 @@ table {
         background: #000;
         border: 0;
         color: white;
-        font-size: 1.8rem
+        font-size: 1.8rem;
     }
 
     .nav-menu {
         display: none;
-        position: absolute;
+        position:absolute;
+        z-index: 20;
         top: calc(100% + 10px);
         right: 0;
         left: 0;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.95);
         border-radius: 20px;
         flex-direction: column;
         gap: 0;

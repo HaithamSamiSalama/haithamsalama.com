@@ -13,6 +13,154 @@
 
 
 <body>
+  
+
+  <section class="blue-zone-page">
+    <header class="main-header">
+      
+      
+      <!--القائمة الرئسيه مع اللوجو والشريط-->
+      <nav class="nav-container">
+        <div class="logo">
+          <img src="images/sitelogo.png" alt="Site Logo">
+        </div>
+         
+        
+        <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false"
+          > القائمة☰
+        </button>
+
+          <ul class="nav-menu">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="droos.html" >كورسات تعليمية</a></li>
+            <li><a href="quran.html">قرءان كريم</a></li>
+            <li><a href="downloads.html">البرامج</a></li>
+            <li><a href="files.html"class="active">الملفات</a></li>
+            <li><a href="articles.html">المقالات</a></li>
+            <li><a href="contact.html" >تواصل معي</a></li>
+            <li><a href="reviews.html">ريفيوهات أجهزة</a></li>
+            <li><a href="vlogs.html">فلوجاتي</a></li>
+          </ul>
+
+          <div class="search-box">
+            <input type="text" placeholder="ابحث عن ...">
+            <span class="search-icon">🔍</span>
+          </div>
+         
+      </nav>
+       <!--القائمة الصغيره للموبايل-->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        if (!navToggle || !navMenu) return;
+        navToggle.addEventListener('click', function() {
+        const isOpen = navMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+    });
+    </script>
+    <!-- نهاية القائمة الرئسيه مع اللوجو والشريط-->
+
+    </header>
+
+    <div class="feature-title"> 
+      <div class="title-content">     
+        <h3>تحميل الملفات</h3>
+        <p>هنا هتلاقي هنا ستجد الملفات والموارد المهمة  المميزه للتحميل الفوري</p>  
+      </div>     
+    </div>
+        
+
+      <div class="feature-body">
+        <div class="body-content">  
+   
+        
+          <!--محتويات الملفات-->
+  
+          <div class="course-table-wrapper">
+            <table class="course-table">
+              <thead>
+                <tr>
+                  <th>رقم مسلسل</th>
+                  <th>اسم الملف</th>
+                  <th>وصف الملف</th>
+                  <th>تحميل</th>
+                </tr>
+              </thead>
+              
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>فورم الضمان الصحي</td>
+                  <td>طلب تجديد او اضافه افراد على وثيقه الضمان الصحي شركة ضمان جاهز للتعديل</td>
+                  <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
+                </tr>
+
+                <tr>
+                  <td>2</td>
+                  <td>عقد مقاول باطن</td>
+                  <td>عقد اتفاق اعمال مابين المقاول الرئيسي ومقاول الباطن او مابين مقاولين الباطن يسند فيه طرف جزء او كل اعماله الى الطرف الاخر</td>
+                  <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
+                </tr>
+
+                <tr>
+                 <td>3</td>
+                  <td>كود JavaScript</td>
+                  <td>ملف يحتوي على أمثلة تفاعلية لوظائف JavaScript الأساسية.</td>
+                  <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
+                </tr>
+
+                <tr>
+                  <td>4</td>
+                  <td>كتاب PHP للمبتدئين</td>
+                  <td>ملف PDF يشرح أساسيات PHP وبرمجة السيرفر خطوة بخطوة.</td>
+                  <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
+                </tr>
+
+                <tr>
+                  <td>5</td>
+                  <td>عرض بوربوينت</td>
+                  <td>عرض تقديمي جاهز لشرح مشروع أو موضوع تعليمي بطريقة احترافية.</td>
+                 <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- نهاية محتويات الموقع-->
+      </div>
+      <!-- نهاية قلب الصفحة feature-body -->
+       
+    <footer style="text-align: center;"><span id="visitor-counter">انت الزائر رقم 0</span><br>&copy; 2025 مجتمع هيثم سلامة</footer> 
+
+    <!--عداد الزوار-->
+    <script>
+        (function() {
+            // لو المستخدم اتعد قبل كده في نفس الجلسة
+            if (!sessionStorage.getItem('counted')) {
+                let counter = localStorage.getItem('siteVisitorCount');
+                if (!counter || isNaN(counter)) counter = 0;
+                counter = parseInt(counter, 10) + 1;
+                try {
+                    localStorage.setItem('siteVisitorCount', counter);        
+                    localStorage.setItem('siteVisitorCount', counter);
+                    sessionStorage.setItem('counted', 'true'); // علامة إننا حسبناه
+                } catch (e) {}
+            }
+            // عرض العداد
+            var el = document.getElementById('visitor-counter');
+            if (el) {
+                el.textContent = 'انت الزائر رقم ' + localStorage.getItem('siteVisitorCount');
+            }
+        })();
+    </script>
+   
+    
+
+  </section>
   <!--  شريط الاعلانات -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6625546265016157"crossorigin="anonymous"></script>
   <ins class="adsbygoogle"
@@ -24,125 +172,9 @@
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
-
-    <section class="blue-zone-page">
-        
-        <header class="main-header">
-            <nav class="nav-container">
-                <div class="logo">
-                    <img src="images/sitelogo.png" alt="Site Logo">
-                </div>
-                
-                      <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
-<ul class="nav-menu">
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="droos.html" >كورسات تعليمية</a></li>
-                    <li><a href="quran.html">قرءان كريم</a></li>
-                    <li><a href="downloads.html">البرامج</a></li>
-                    <li><a href="files.html"class="active">الملفات</a></li>
-                    <li><a href="articles.html">المقالات</a></li>
-                    <li><a href="contact.html" >تواصل معي</a></li>
-                    <li><a href="reviews.html">ريفيوهات أجهزة</a></li>
-                    <li><a href="vlogs.html">فلوجاتي</a></li>
-                  </ul>
-
-                <div class="search-box">
-                    <input type="text" placeholder="ابحث عن ...">
-                    <span class="search-icon">🔍</span>
-                </div>
-            </nav>
-          
-
-            
-        </header>
-
-      <div class="feature-title"> 
-        <div class="title-content">     
-          <h3>تحميل الملفات</h3>
-          <p>هنا هتلاقي هنا ستجد الملفات والموارد المهمة  المميزه للتحميل الفوري</p>  
-        </div>     
-      </div>
-        
-
-      <div class="feature-body">
-        <div class="body-content">  
-   
-        
-<!--محتويات الملفات-->
-  
-      <div class="course-table-wrapper">
-        <table class="course-table">
-          <thead>
-            <tr>
-              <th>رقم مسلسل</th>
-              <th>اسم الملف</th>
-              <th>وصف الملف</th>
-              <th>تحميل</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>فورم الضمان الصحي</td>
-              <td>طلب تجديد او اضافه افراد على وثيقه الضمان الصحي شركة ضمان جاهز للتعديل</td>
-              <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
-            </tr>
-
-            <tr>
-              <td>2</td>
-              <td>عقد مقاول باطن</td>
-              <td>عقد اتفاق اعمال مابين المقاول الرئيسي ومقاول الباطن او مابين مقاولين الباطن يسند فيه طرف جزء او كل اعماله الى الطرف الاخر</td>
-              <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
-            </tr>
-
-            <tr>
-              <td>3</td>
-              <td>كود JavaScript</td>
-              <td>ملف يحتوي على أمثلة تفاعلية لوظائف JavaScript الأساسية.</td>
-              <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
-            </tr>
-
-            <tr>
-              <td>4</td>
-              <td>كتاب PHP للمبتدئين</td>
-              <td>ملف PDF يشرح أساسيات PHP وبرمجة السيرفر خطوة بخطوة.</td>
-              <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
-            </tr>
-
-            <tr>
-              <td>5</td>
-              <td>عرض بوربوينت</td>
-              <td>عرض تقديمي جاهز لشرح مشروع أو موضوع تعليمي بطريقة احترافية.</td>
-              <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-
-    </div>
-    
-    <!-- نهاية محتويات الموقع-->
-    </div>
-          </div>  
-        </div>
-       <footer style="text-align: center;">&copy; 2025 مجتمع هيثم سلامة</footer> 
-    </section>
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    if (!navToggle || !navMenu) return;
-
-    navToggle.addEventListener('click', function() {
-      const isOpen = navMenu.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-  });
-</script></body>
+</body>
 </html>
+
 
 
 

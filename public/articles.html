@@ -13,44 +13,58 @@
 
 
 <body>
-  <!--  شريط الاعلانات -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6625546265016157"crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-    style="display:block"
-    data-ad-client="ca-pub-6625546265016157"
-    data-ad-slot="3392030847"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+ 
 
 
   <section class="blue-zone-page">     
-    <header class="main-header">
+       <header class="main-header">
+      
+      
+      <!--القائمة الرئسيه مع اللوجو والشريط-->
       <nav class="nav-container">
         <div class="logo">
           <img src="images/sitelogo.png" alt="Site Logo">
-            </div>      
-                  <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
-<ul class="nav-menu">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="droos.html">كورسات تعليمية</a></li>
-                <li><a href="quran.html">قرءان كريم</a></li>
-                <li><a href="downloads.html">البرامج</a></li>
-                <li><a href="files.html">الملفات</a></li>
-                <li><a href="articles.html" class="active">المقالات</a></li>
-                <li><a href="contact.html">تواصل معي</a></li>
-                <li><a href="reviews.html">ريفيوهات أجهزة</a></li>
-                <li><a href="vlogs.html">فلوجاتي</a></li>
-                </ul>
+        </div>
+         
+        
+        <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false"
+          > القائمة☰
+        </button>
 
-            <div class="search-box">
-              <input type="text" placeholder="ابحث عن ...">
-              <span class="search-icon">🔍</span>
-            </div>
+          <ul class="nav-menu">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="droos.html" >كورسات تعليمية</a></li>
+            <li><a href="quran.html">قرءان كريم</a></li>
+            <li><a href="downloads.html">البرامج</a></li>
+            <li><a href="files.html">الملفات</a></li>
+            <li><a href="articles.html" class="active">المقالات</a></li>
+            <li><a href="contact.html" >تواصل معي</a></li>
+            <li><a href="reviews.html">ريفيوهات أجهزة</a></li>
+            <li><a href="vlogs.html">فلوجاتي</a></li>
+          </ul>
+
+          <div class="search-box">
+            <input type="text" placeholder="ابحث عن ...">
+            <span class="search-icon">🔍</span>
+          </div>
+         
       </nav>
+       <!--القائمة الصغيره للموبايل-->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        if (!navToggle || !navMenu) return;
+        navToggle.addEventListener('click', function() {
+        const isOpen = navMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+    });
+    </script>
+    <!-- نهاية القائمة الرئسيه مع اللوجو والشريط-->
+
     </header>
+
 
     <div class="feature-body">    
       <div class="feature-title"> 
@@ -103,22 +117,53 @@
       <!-- نهاية المقالات-->
     </div>
     <!-- نهاية قلب الصفحة feature-body --> 
-    <footer style="text-align: center;">&copy; 2025 مجتمع هيثم سلامة</footer> 
-  </section> 
-  <!-- نهاية المساحه الزرقاء blue-zone-page -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    if (!navToggle || !navMenu) return;
+<footer style="text-align: center;"><span id="visitor-counter">انت الزائر رقم 0</span><br>&copy; 2025 مجتمع هيثم سلامة</footer> 
 
-    navToggle.addEventListener('click', function() {
-      const isOpen = navMenu.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-  });
-</script></body>
+    <!--عداد الزوار-->
+    <script>
+        (function() {
+            // لو المستخدم اتعد قبل كده في نفس الجلسة
+            if (!sessionStorage.getItem('counted')) {
+                let counter = localStorage.getItem('siteVisitorCount');
+                if (!counter || isNaN(counter)) counter = 0;
+                counter = parseInt(counter, 10) + 1;
+                try {
+                    localStorage.setItem('siteVisitorCount', counter);        
+                    localStorage.setItem('siteVisitorCount', counter);
+                    sessionStorage.setItem('counted', 'true'); // علامة إننا حسبناه
+                } catch (e) {}
+            }
+            // عرض العداد
+            var el = document.getElementById('visitor-counter');
+            if (el) {
+                el.textContent = 'انت الزائر رقم ' + localStorage.getItem('siteVisitorCount');
+            }
+        })();
+    </script>
+   
+   
+
+  </section>
+   <!--  شريط الاعلانات -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6625546265016157"crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-6625546265016157"
+    data-ad-slot="3392030847"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</body>
 </html>
+
+
+
+
+
+
+
 
 
 
