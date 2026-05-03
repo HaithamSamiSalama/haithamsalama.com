@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6625546265016157" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مجتمع هيثم سلامه</title>
+    <link rel='icon' type='image/png' href='images/logo.png'>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -29,6 +30,7 @@
                     <img src="images/sitelogo.png" alt="Site Logo">
                 </div>
                 
+                <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
                 <ul class="nav-menu">
                     <li><a href="index.html"class="active">الرئيسية</a></li>
                     <li><a href="droos.html">كورسات تعليمية</a></li>
@@ -119,5 +121,21 @@
         </div>
     </section>
 
-</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    if (!navToggle || !navMenu) return;
+
+    navToggle.addEventListener('click', function() {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+</script></body>
 </html>
+
+
+
+
+
