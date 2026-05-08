@@ -541,10 +541,18 @@ table td {
 }
 
 .program-image {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  object-fit: contain;
+  width: 200px;
+  height: 200px;          /* حجم ثابت */
+  object-fit:scale-down;      /* يملأ المساحة ويقص الزائد */
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .program-image {
+         width: 100px;
+        height: 100px;
+        object-fit: scale-down/* حجم أصغر للشاشات الصغيرة */
+    }
 }
 
 .text-box {
@@ -553,22 +561,14 @@ table td {
   height: 100%;
 }
 
-.titles h2,
-.titles h3 {
-  margin: 0 0 6px 0;
-  font-size: 40px;
-  font-weight: bold;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+
 
 .titles.center {
   text-align: center;
 }
 
 .description {
-  flex: 1;
-  max-height: 84px;
-  overflow: hidden;
+  max-height: none;
 }
 
 .description p {
@@ -1081,6 +1081,121 @@ table {
     }
 }
 
+@media (max-width: 1024px) {
+  .program-frame {
+    flex-direction: column;
+    text-align: center;
+    align-items: stretch;
+    padding: 18px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .program-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-box {
+    flex: unset;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .program-image {
+    width: 160px;
+    height: auto;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .text-box {
+    width: 100%;
+    height: auto;
+  }
+
+  .titles {
+    text-align: center;
+  }
+
+  .titles h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .titles h2 {
+    font-size: 1rem;
+    margin-top: 0;
+  }
+
+  .description p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin: 0 auto 14px;
+    max-width: 100%;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.95rem;
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .program-image {
+    width: 130px;
+  }
+
+  .program-frame {
+    padding: 14px;
+    overflow: hidden;
+  }
+
+  .titles h3 {
+    font-size: 1.15rem;
+  }
+
+  .titles h2 {
+    font-size: 0.95rem;
+  }
+
+  .description p {
+    font-size: 0.95rem;
+  }
+
+  .buttons {
+    gap: 10px;
+  }
+
+  .btn {
+    font-size: 0.88rem;
+    padding: 10px 12px;
+  }
+}
 
 
+.titles h2,
+.titles h3 {
+  font-size: 40px;
+}
+
+@media (max-width: 768px) {
+  .titles h2,
+  .titles h3 {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+}
 

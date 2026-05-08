@@ -20,7 +20,9 @@
       <!--القائمة الرئسيه مع اللوجو والشريط-->
       <nav class="nav-container">
         <div class="logo">
-          <img src="images/sitelogo.png" alt="Site Logo">
+          <a href="index.html">
+            <img src="images/sitelogo.png" alt="Site Logo">
+          </a>
         </div>
          
         
@@ -70,7 +72,7 @@
                 
                 <div class="hero-actions">
                     <a href="downloads.html" class="btn-yellow">تصفح البرامج 📥</a>
-                    <a href="droos.html" class="btn-outline">شاهد الشروحات <span class="play-icon">▶</span></a>
+                    <a href="quran.html" class="btn-outline">قران كريم<span class="play-icon">▶</span></a>
                 </div>
             </div>
             <div class="hero-visual-side">
@@ -90,45 +92,50 @@
     <section class="features-section container">
         <div class="features-grid">
             
-            <div class="feature-card">
+            
+           <a href="articles.html" class="feature-card">                          
                 <div class="card-content">
-                    <h3>مجتمع داعم</h3>
-                    <p>انضم لمجتمعنا وشارك تجاربك واستفد من الآخرين</p>
-                </div>
-                <div class="card-icon">
-                    <img src="images/1.png" alt="icon">
-                </div>
-            </div>
+                    <h3>مقالات مفيدة</h3>
+                    <p>اثري معلوماتك بمقالاتنا المفيده</p>
+                </div>                
+                <div class="card-icon">                  
+                    <img src="images/1.png" alt="icon"/>                   
+                </div>               
+            </a>
 
-            <div class="feature-card">
+            <a href="droos.html" class="feature-card">                          
                 <div class="card-content">
                     <h3>شروحات مبسطة</h3>
                     <p>شروحات سهلة بالفيديو لكل البرامج</p>
-                </div>
-                <div class="card-icon">
-                    <img src="images/2.png" alt="icon">
-                </div>
-            </div>
+                </div>                
+                <div class="card-icon">                  
+                    <img src="images/2.png" alt="icon"/>                   
+                </div>               
+            </a>
 
-            <div class="feature-card">
+           
+            <a href="files.html" class="feature-card">                          
                 <div class="card-content">
                     <h3>تحميل سريع</h3>
                     <p>روابط مباشرة وسريعة بدون إعلانات مزعجة</p>
-                </div>
-                <div class="card-icon">
-                    <img src="images/3.png" alt="icon">
-                </div>
-            </div>
+                </div>                
+                <div class="card-icon">                  
+                    <img src="images/3.png" alt="icon"/>                   
+                </div>               
+            </a>
 
-            <div class="feature-card">
+                       
+            <a href="downloads.html" class="feature-card">                          
                 <div class="card-content">
                     <h3>برامج آمنة</h3>
                     <p>جميع البرامج مضمونة وخالية من الفيروسات</p>
-                </div>
-                <div class="card-icon">
-                    <img src="images/4.png" alt="icon">
-                </div>
-            </div>
+                </div>                
+                <div class="card-icon">                  
+                    <img src="images/4.png" alt="icon"/>                   
+                </div>               
+            </a>
+            
+            
             </section>
 
           <!-- نهاية محتويات الموقع-->
@@ -142,26 +149,8 @@
      <footer style="text-align: center;"><span id="visitor-counter">انت الزائر رقم 0</span><br>&copy; 2025 مجتمع هيثم سلامة</footer> 
 
     <!--عداد الزوار-->
-    <script>
-        (function() {
-            // لو المستخدم اتعد قبل كده في نفس الجلسة
-            if (!sessionStorage.getItem('counted')) {
-                let counter = localStorage.getItem('siteVisitorCount');
-                if (!counter || isNaN(counter)) counter = 0;
-                counter = parseInt(counter, 10) + 1;
-                try {
-                    localStorage.setItem('siteVisitorCount', counter);        
-                    localStorage.setItem('siteVisitorCount', counter);
-                    sessionStorage.setItem('counted', 'true'); // علامة إننا حسبناه
-                } catch (e) {}
-            }
-            // عرض العداد
-            var el = document.getElementById('visitor-counter');
-            if (el) {
-                el.textContent = 'انت الزائر رقم ' + localStorage.getItem('siteVisitorCount');
-            }
-        })();
-    </script>
+    <div id="visitor-count">جاري التحميل...</div>
+    <script src="visitor.js"></script>
    
     
  <br>

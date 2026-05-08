@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم - إدارة الملفات</title>
+  <link rel='icon' type='image/png' href='images/logo.png'>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    .admin-panel {
+      max-width: 1100px;
+      margin: 20px auto 50px;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      border: 2px solid rgba(10, 46, 115, 0.1);
+    }
+
+    .admin-panel h2 {
+      margin-bottom: 1rem;
+      color: #0a2e73;
+      text-align: center;
+    }
+
+    .admin-form {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .admin-form label {
+      text-align: right;
+      font-weight: bold;
+      color: #0a2e73;
+    }
+
+    .admin-form input,
+    .admin-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(10, 46, 115, 0.2);
+      font-size: 1rem;
+    }
+
+    .admin-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    .admin-actions button {
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-save {
+      background: #0a2e73;
+      color: white;
+    }
+
+    .btn-cancel {
+      background: #f59e42;
+      color: #051636;
+    }
+
+    .admin-status {
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: rgba(10, 46, 115, 0.08);
+      color: #0a2e73;
+      display: none;
+      margin-top: 10px;
+    }
+
+    .admin-table-wrapper {
+      overflow-x: auto;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .admin-table th,
+    .admin-table td {
+      border: 1px solid rgba(10, 46, 115, 0.15);
+      padding: 12px 14px;
+      text-align: right;
+      vertical-align: middle;
+    }
+
+    .admin-table th {
+      background: rgba(10, 46, 115, 0.1);
+      color: #051636;
+    }
+
+    .admin-table button {
+      border: none;
+      border-radius: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-edit {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-delete {
+      background: #ef4444;
+      color: white;
+    }
+
+    @media (max-width: 760px) {
+      .admin-actions {
+        justify-content: center;
+      }
+
+      .admin-panel {
+        padding: 16px;
+      }
+
+      .admin-table th,
+      .admin-table td {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="blue-zone-page">
+    <header class="main-header">
+      <nav class="nav-container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/sitelogo.png" alt="Site Logo">
+          </a>
+        </div>
+        <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false"> القائمة☰</button>
+        <ul class="nav-menu">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="droos.html">كورسات تعليمية</a></li>
+          <li><a href="quran.html">قرءان كريم</a></li>
+          <li><a href="downloads.html">البرامج</a></li>
+          <li><a href="files.html">الملفات</a></li>
+          <li><a href="articles.html">المقالات</a></li>
+          <li><a href="contact.html">تواصل معي</a></li>
+          <li><a href="reviews.html">ريفيوهات أجهزة</a></li>
+          <li><a href="vlogs.html">فلوجاتي</a></li>
+        </ul>
+        <div class="search-box">
+          <input type="text" placeholder="ابحث عن ...">
+          <span class="search-icon">🔍</span>
+        </div>
+      </nav>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const navToggle = document.querySelector('.nav-toggle');
+          const navMenu = document.querySelector('.nav-menu');
+          if (!navToggle || !navMenu) return;
+          navToggle.addEventListener('click', function() {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          });
+        });
+      </script>
+    </header>
+
+    <div id="login-container" class="admin-panel">
+      <h2>تسجيل دخول الأدمن</h2>
+      <form id="login-form" class="admin-form">
+        <label for="admin-email">البريد الإلكتروني</label>
+        <input id="admin-email" type="email" placeholder="admin@example.com" required>
+
+        <label for="admin-password">كلمة المرور</label>
+        <input id="admin-password" type="password" placeholder="********" required>
+
+        <div class="admin-actions">
+          <button type="submit" class="btn-save">تسجيل الدخول</button>
+        </div>
+
+        <div id="auth-message" class="admin-status"></div>
+      </form>
+      <p style="text-align:center; color:#475569; margin-top:1rem;">استخدم بيانات الأدمن للولوج إلى لوحة التحكم.</p>
+    </div>
+
+    <div id="admin-container" class="admin-panel" style="display: none;">
+      <div style="display:flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;">
+        <h2>لوحة إدارة الملفات</h2>
+        <button id="sign-out-btn" class="btn-cancel" style="display:none;">تسجيل خروج</button>
+      </div>
+
+      <form id="admin-form" class="admin-form">
+        <label for="file-name">اسم الملف</label>
+        <input id="file-name" type="text" placeholder="أدخل اسم الملف" required>
+
+        <label for="file-description">وصف الملف</label>
+        <textarea id="file-description" rows="4" placeholder="أدخل وصف الملف"></textarea>
+
+        <label for="file-download">رابط التحميل</label>
+        <input id="file-download" type="url" placeholder="https://...">
+
+        <div class="admin-actions">
+          <button type="submit" class="btn-save">حفظ الملف</button>
+          <button type="button" id="cancel-edit-btn" class="btn-cancel">إلغاء التعديل</button>
+        </div>
+
+        <div id="admin-status" class="admin-status"></div>
+      </form>
+
+      <div class="admin-table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>رقم</th>
+              <th>اسم الملف</th>
+              <th>الوصف</th>
+              <th>الرابط</th>
+              <th>الإجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="admin-files-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="firebase-app-compat.js"></script>
+    <script src="firebase-firestore-compat.js"></script>
+    <script src="firebase-auth-compat.js"></script>
+    <script src="config-firebase.js"></script>
+    <script src="admin-manager.js"></script>
+  </section>
+</body>
+
+</html>
