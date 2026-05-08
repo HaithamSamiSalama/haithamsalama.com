@@ -148,9 +148,27 @@
 
      <footer style="text-align: center;"><span id="visitor-counter">انت الزائر رقم 0</span><br>&copy; 2025 مجتمع هيثم سلامة</footer> 
 
-    <!--عداد الزوار-->
-    <div id="visitor-count">جاري التحميل...</div>
-    <script src="visitor.js"></script>
+   <!--عداد الزوار-->
+    <script>
+        (function() {
+            // لو المستخدم اتعد قبل كده في نفس الجلسة
+            if (!sessionStorage.getItem('counted')) {
+                let counter = localStorage.getItem('siteVisitorCount');
+                if (!counter || isNaN(counter)) counter = 0;
+                counter = parseInt(counter, 10) + 1;
+                try {
+                    localStorage.setItem('siteVisitorCount', counter);        
+                    localStorage.setItem('siteVisitorCount', counter);
+                    sessionStorage.setItem('counted', 'true'); // علامة إننا حسبناه
+                } catch (e) {}
+            }
+            // عرض العداد
+            var el = document.getElementById('visitor-counter');
+            if (el) {
+                el.textContent = 'انت الزائر رقم ' + localStorage.getItem('siteVisitorCount');
+            }
+        })();
+    </script>
    
     
  <br>
