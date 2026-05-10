@@ -75,70 +75,21 @@
           <p>هنا هتلاقي هنا ستجد البرامج والادوات المميزةالهامه مع شروحات لها</p>   
         </div>     
       </div>
-      <!-- يمكنك إضافة محتوى التحميلات هنا -->
-        
-      <!-- برنامج مصنع الصيغ -->
-      <div class="program-frame">
-        <div class="program-content image-box">
-          <img src="images/format.png" alt="مصنع الصيغ - Format Factory" class="program-image">
-        </div>
+      <!-- محتوى البرامج الديناميكي -->
+      <div id="programs-container"></div>
 
-        <div class="program-content text-box">
-          <div class="titles">
-            <h3>مصنع الصيغ</h3>
-            <h2>Format Factory</h2>
-          </div>
-
-          <div class="description">
-            <p>
-             برنامج تحويل الفيديو فورمات فاكتوري لتحويل مقاطع الفيديو و الافلام و الصوت الى 
-             عدة صيغ مثل تحويل الفيديو غير ذلك من الصيغ الأخرى...
-            </p>
-          </div>
-
-          <div class="buttons">
-            <a href="https://haithamsalamaa.blogspot.com/2026/04/5.html" target="_blank" class="btn btn-blue">
-               مشاهدة الفيديو التوضيحي - يوتيوب
+              
             </a>
 
-            <a href="https://formatfactory.ar.uptodown.com/windows/download" target="_blank" class="btn btn-purple">
-               تحميل الآن - Download Now
+            
+              
             </a>
           </div>
         </div>
       </div> 
       <!--نهاية برنامج الصيغ-->
 
-      <!-- OBS -->
-      <div class="program-frame obs">
-        <div class="program-content image-box">
-          <img src="images/obs.png" alt="برنامج البث المباشر - OBS Studio" class="program-image">
-        </div>
-
-        <div class="program-content text-box">
-          <div class="titles center">
-            <h3>برنامج البث المباشر</h3>
-            <h2>OBS Studio</h2>
-          </div>
-
-          <div class="description">
-            <p>
-             برنامج رائع للبث المباشر والتسجيل من مصادر الفيديو المختلفة مثل الكاميرات...
-            </p>
-          </div>
-
-          <div class="buttons">
-            <a href="https://youtu.be/-Ks5ApH_e7o" target="_blank" class="btn btn-blue">
-               مشاهدة الفيديو التوضيحي - يوتيوب
-            </a>
-
-            <a href="https://obsproject.com/download" target="_blank" class="btn btn-purple">
-             تحميل الآن - Download Now
-            </a>
-          </div>
-        </div>
-      </div>
-      <!--نهاية OBS-->
+     
     </div>
     <!-- نهاية قلب الصفحة feature-body -->
 <footer style="text-align: center;"><span id="visitor-counter">انت الزائر رقم 0</span><br>&copy; 2025 مجتمع هيثم سلامة</footer> 
@@ -164,8 +115,66 @@
             }
         })();
     </script>
-   
- 
+    
+    <!-- سكربت تحميل البرامج من لوحة التحكم -->
+    <script>
+        function loadProgramsData() {
+            const programsData = localStorage.getItem('programsData');
+            const container = document.getElementById('programs-container');
+            
+            if (!container) return;
+
+            if (!programsData) {
+                container.innerHTML = '<p style="padding: 20px; text-align: center; color: #999;">لا توجد برامج متاحة حالياً</p>';
+                return;
+            }
+
+            const programs = JSON.parse(programsData);
+            if (programs.length === 0) {
+                container.innerHTML = '<p style="padding: 20px; text-align: center; color: #999;">لا توجد برامج متاحة حالياً</p>';
+                return;
+            }
+
+            let html = '';
+            programs.forEach((program, index) => {
+                html += `
+                    <div class="program-frame">
+                        <div class="program-content image-box">
+                            ${program.image ? 
+                                `<img src="${program.image}" alt="${program.nameAr}" class="program-image">` :
+                                `<img src="images/placeholder.png" alt="${program.nameAr}" class="program-image">`
+                            }
+                        </div>
+
+                        <div class="program-content text-box">
+                            <div class="titles">
+                                <h3>${program.nameAr}</h3>
+                                <h2>${program.nameEn}</h2>
+                            </div>
+
+                            <div class="description">
+                                <p>${program.description}</p>
+                            </div>
+
+                            <div class="buttons">
+                                <a href="${program.videoLink}" target="_blank" class="btn btn-blue">
+                                    مشاهدة الفيديو التوضيحي - يوتيوب
+                                </a>
+
+                                <a href="${program.downloadLink}" target="_blank" class="btn btn-purple">
+                                    تحميل الآن - Download Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProgramsData);
+    </script>
 
   </section>
    <!--  شريط الاعلانات -->

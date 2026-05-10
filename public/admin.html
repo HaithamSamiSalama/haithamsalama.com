@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - مجتمع هيثم سلامة</title>
+    <link rel='icon' type='image/png' href='images/logo.png'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #051636 0%, #0a2e73 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .login-container h2 {
+            color: #0a2e73;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #ffcc29;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #0a2e73 0%, #3b4ed7 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .error-msg {
+            color: #dc2626;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .dashboard {
+            display: none;
+            width: 100%;
+            max-width: 1400px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #0a2e73 0%, #3b4ed7 100%);
+            color: white;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dashboard-header h2 {
+            font-size: 1.8rem;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e5e7eb;
+            background: #f5f5f5;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #666;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn.active {
+            color: #0a2e73;
+            border-bottom-color: #ffcc29;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h3 {
+            color: #0a2e73;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #ffcc29;
+            padding-bottom: 10px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Tajawal', sans-serif;
+            resize: vertical;
+            min-height: 80px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ffcc29;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-add {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-update {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-cancel {
+            background: #9ca3af;
+            color: white;
+        }
+
+        .items-list {
+            background: #f5f5f5;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .item-card {
+            background: white;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .item-card:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .item-name {
+            font-weight: bold;
+            color: #0a2e73;
+            margin-bottom: 5px;
+        }
+
+        .item-details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+
+        .success-msg {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .file-input-label {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .file-input-label:hover {
+            background: #2563eb;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .image-preview {
+            max-width: 150px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 760px) {
+            .login-container {
+                padding: 25px;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab-btn {
+                flex: 1 1 50%;
+            }
+
+            .tab-content {
+                padding: 15px;
+            }
+
+            .item-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container" id="loginContainer">
+    <h2>لوحة التحكم</h2>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="username">اسم المستخدم</label>
+            <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">كلمة السر</label>
+            <input type="password" id="password" required>
+        </div>
+        <button type="submit" class="login-btn">دخول</button>
+        <div class="error-msg" id="errorMsg">بيانات الدخول غير صحيحة</div>
+    </form>
+</div>
+
+<div class="dashboard" id="dashboard">
+    <div class="dashboard-header">
+        <h2>لوحة التحكم</h2>
+        <button class="logout-btn" id="logoutBtn">تسجيل الخروج</button>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="files">الملفات</button>
+        <button class="tab-btn" data-tab="programs">البرامج</button>
+    </div>
+
+    <!-- جزء الملفات -->
+    <div class="tab-content active" id="files-tab">
+        <div class="section">
+            <h3>إضافة ملف جديد</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>اسم الملف</label>
+                    <input type="text" id="fileName" placeholder="مثال: كتاب الإدارة">
+                </div>
+                <div class="form-group">
+                    <label>رابط التحميل</label>
+                    <input type="url" id="fileLink" placeholder="https://example.com/file">
+                </div>
+                <div class="form-group">
+                    <label>الوصف</label>
+                    <textarea id="fileDesc" placeholder="وصف الملف..."></textarea>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-add" id="addFileBtn">إضافة ملف</button>
+                <button class="btn btn-cancel" id="cancelEditFileBtn" style="display:none;">إلغاء التعديل</button>
+            </div>
+            <div class="success-msg" id="fileSuccessMsg">تم العملية بنجاح</div>
+        </div>
+
+        <div class="section">
+            <h3>الملفات الموجودة</h3>
+            <div class="items-list" id="filesList"></div>
+        </div>
+    </div>
+
+    <!-- جزء البرامج -->
+    <div class="tab-content" id="programs-tab">
+        <div class="section">
+            <h3>إضافة برنامج جديد</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>اسم البرنامج (عربي)</label>
+                    <input type="text" id="programNameAr" placeholder="مثال: مصنع الصيغ">
+                </div>
+                <div class="form-group">
+                    <label>اسم البرنامج (إنجليزي)</label>
+                    <input type="text" id="programNameEn" placeholder="مثال: Format Factory">
+                </div>
+                <div class="form-group">
+                    <label>وصف البرنامج</label>
+                    <textarea id="programDesc" placeholder="وصف البرنامج..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>رابط الفيديو</label>
+                    <input type="url" id="programVideoLink" placeholder="https://youtube.com/watch?v=...">
+                </div>
+                <div class="form-group">
+                    <label>رابط التحميل</label>
+                    <input type="url" id="programDownloadLink" placeholder="https://example.com/download">
+                </div>
+                <div class="form-group">
+                    <label>صورة البرنامج</label>
+                    <label class="file-input-label">
+                        اختر صورة
+                        <input type="file" id="programImage" accept="image/*">
+                    </label>
+                    <img id="imagePreview" class="image-preview" style="display:none;">
+                </div>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-add" id="addProgramBtn">إضافة برنامج</button>
+                <button class="btn btn-cancel" id="cancelEditProgramBtn" style="display:none;">إلغاء التعديل</button>
+            </div>
+            <div class="success-msg" id="programSuccessMsg">تم العملية بنجاح</div>
+        </div>
+
+        <div class="section">
+            <h3>البرامج الموجودة</h3>
+            <div class="items-list" id="programsList"></div>
+        </div>
+    </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

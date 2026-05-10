@@ -78,10 +78,10 @@
         <div class="body-content">  
    
         
-          <!--محتويات الملفات-->
+          <!--محتويات الملفات الديناميكية-->
   
-          <div class="course-table-wrapper">
-            <table class="course-table">
+          <div class="course-table-wrapper" id="files-table-wrapper">
+            <table class="course-table" id="files-table">
               <thead>
                 <tr>
                   <th>رقم مسلسل</th>
@@ -91,42 +91,8 @@
                 </tr>
               </thead>
               
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>فورم الضمان الصحي</td>
-                  <td>طلب تجديد او اضافه افراد على وثيقه الضمان الصحي شركة ضمان جاهز للتعديل</td>
-                  <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
-                </tr>
-
-                <tr>
-                  <td>2</td>
-                  <td>عقد مقاول باطن</td>
-                  <td>عقد اتفاق اعمال مابين المقاول الرئيسي ومقاول الباطن او مابين مقاولين الباطن يسند فيه طرف جزء او كل اعماله الى الطرف الاخر</td>
-                  <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
-                </tr>
-
-                <tr>
-                 <td>3</td>
-                  <td>كود JavaScript</td>
-                  <td>ملف يحتوي على أمثلة تفاعلية لوظائف JavaScript الأساسية.</td>
-                  <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
-                </tr>
-
-                <tr>
-                  <td>4</td>
-                  <td>كتاب PHP للمبتدئين</td>
-                  <td>ملف PDF يشرح أساسيات PHP وبرمجة السيرفر خطوة بخطوة.</td>
-                  <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
-                </tr>
-
-                <tr>
-                  <td>5</td>
-                  <td>عرض بوربوينت</td>
-                  <td>عرض تقديمي جاهز لشرح مشروع أو موضوع تعليمي بطريقة احترافية.</td>
-                 <td><a href="https://www.mediafire.com/file/nr79gz2j50xq0un/no_lock_daman_form_milenyum.docx/file" target="_blank" class="download-btn" download>تحميل الملف</a></td>
-                </tr>
-
+              <tbody id="files-tbody">
+                <!-- سيتم تحميل الملفات هنا ديناميكياً -->
               </tbody>
             </table>
           </div>
@@ -173,6 +139,43 @@
     data-full-width-responsive="true"></ins>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  <!-- سكربت تحميل الملفات من لوحة التحكم -->
+  <script>
+    function loadFilesData() {
+        const filesData = localStorage.getItem('filesData');
+        const tbody = document.getElementById('files-tbody');
+        
+        if (!tbody) return;
+
+        if (!filesData) {
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px;">لا توجد ملفات متاحة</td></tr>';
+            return;
+        }
+
+        const files = JSON.parse(filesData);
+        if (files.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px;">لا توجد ملفات متاحة</td></tr>';
+            return;
+        }
+
+        let html = '';
+        files.forEach((file, index) => {
+            html += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${file.name}</td>
+                    <td>${file.description}</td>
+                    <td><a href="${file.link}" target="_blank" class="table-btn">تحميل الملف</a></td>
+                </tr>
+            `;
+        });
+
+        tbody.innerHTML = html;
+    }
+
+    document.addEventListener('DOMContentLoaded', loadFilesData);
   </script>
 </body>
 </html>
